@@ -157,3 +157,42 @@ To refer this link[jsoup set html](https://www.tutorialspoint.com/jsoup/jsoup_se
 ###Set Text
 To refer this link[jsoup set text](https://www.tutorialspoint.com/jsoup/jsoup_set_text.htm)
 
+##Cleaning HTML
+###Sanitize HTML
+Following example will showcase prevention of XSS attacks or cross-site scripting attack.
+####Syntax
+`String safeHtml =  Jsoup.clean(html, Whitelist.basic());`
+***Jsoup** - main class to parse the given HTML String.
+***html** - Initial HTML String.
+***safeHtml** - Cleaned HTML.
+***Whitelist** - Object to provide default configurations to safeguard html.
+***clean()** - cleans the html using Whitelist.
+####Example
+*JsoupTester.java*
+```java
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+
+public class JsoupTester {
+   public static void main(String[] args) {
+      String html = "<p><a href='http://example.com/'"
+         +" onclick='checkData()'>Link</a></p>";
+
+      System.out.println("Initial HTML: " + html);
+      String safeHtml =  Jsoup.clean(html, Whitelist.basic());
+
+      System.out.println("Cleaned HTML: " +safeHtml);
+   }
+}
+```
+####Verify the result
+Compile
+`C:\jsoup>javac JsoupTester.java`
+Run
+`C:\jsoup>java JsoupTester`
+Result
+``
+Initial HTML: <p><a href='http://example.com/' onclick='checkData()'>Link</a></p>
+Cleaned HTML: <p><a href="http://example.com/" rel="nofollow">Link</a></p>
+``
+To refer this link[jsoup sanitize html](https://www.tutorialspoint.com/jsoup/jsoup_sanitize_html.htm)
