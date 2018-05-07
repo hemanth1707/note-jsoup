@@ -196,3 +196,27 @@ Initial HTML: <p><a href='http://example.com/' onclick='checkData()'>Link</a></p
 Cleaned HTML: <p><a href="http://example.com/" rel="nofollow">Link</a></p>
 ``
 To refer this link[jsoup sanitize html](https://www.tutorialspoint.com/jsoup/jsoup_sanitize_html.htm)
+
+#JSOUP Definition
+*Jsoup is a java html parser. 
+*It is a java library that is used to parse HTML document. 
+*Jsoup provides api to extract and manipulate data from URL or HTML file. 
+*It uses DOM, CSS and Jquery-like methods for extracting and manipulating file.
+###Example
+*HelloJsoup.java*
+```java
+import java.io.IOException;  
+import org.jsoup.Jsoup;  
+import org.jsoup.nodes.Document;
+ 
+public class HelloJsoup {  
+ 
+   public static void main( String[] args ) throws IOException{  
+       Document doc = Jsoup.connect("http://eclipse.org").get();  
+       String title = doc.title();  
+       System.out.println("Title : " + title);  
+   }  
+ 
+}
+```
+
